@@ -1,0 +1,12 @@
+project (memory){
+    exename = a.out
+    specific (make) {
+      compile_flags += -std=c99
+    }
+    Source_Files {
+        *.c
+    }
+    Header_Files {
+        *.h
+    }
+}
