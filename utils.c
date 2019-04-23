@@ -2,9 +2,11 @@
 // Created by Josh Martin on 2019-04-10.
 //
 
+#include <string.h>
 #include "utils.h"
 
-void setIntoTLB(virtual_memory *_this, int pageNumber, int frameNumber) {
+void FIFO_algorthim(virtual_memory *_this, int pageNumber, int frameNumber) {
+
     int i;  // if it's already in the TLB, break
     for(i = 0; i < _this->TLB.entries; i++){
         if(_this->TLB.pageNumber[i] == pageNumber){
@@ -42,6 +44,12 @@ void setIntoTLB(virtual_memory *_this, int pageNumber, int frameNumber) {
             _this->TLB.frameNumber[_this->TLB.entries-1] = frameNumber;
         }
     }
+}
+
+void setIntoTLB(virtual_memory *_this, int pageNumber, int frameNumber) {
+
+    FIFO_algorthim(_this, pageNumber, frameNumber);
+
     if(_this->TLB.entries < TLB_SIZE){
         _this->TLB.entries++;
     }
