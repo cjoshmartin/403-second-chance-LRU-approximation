@@ -9,7 +9,7 @@ typedef struct page_data {
     int TableNumbers[PAGE_TABLE_SIZE];//holds the page numbers
     int TableFrames[PAGE_TABLE_SIZE]; //holds the frame numbers
     int faults;// counts page faults
-} Page;
+} Page_data;
 
 typedef struct TLB_data {
     int pageNumber[TLB_SIZE];
@@ -21,7 +21,7 @@ typedef struct TLB_data {
 typedef struct data_struct {
     FILE *address_file;
     FILE *backing_store;
-    Page pager;
+    Page_data page;
     TLB_data TLB;
     int physicalMemory[TOTAL_NUMBER_OF_FRAMES][FRAME_SIZE];
     int firstAvailableFrame; //tracks the first available frame

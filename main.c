@@ -21,14 +21,14 @@ int find_frame(memory * _this, int pageNumber){
 
     if(frame_number == -1){ // frame_number not found
         for(i = 0; i < _this->firstAvailablePageTableNumber; i++){
-            if(_this->pager.TableNumbers[i] == pageNumber){
-                frame_number = _this->pager.TableFrames[i];
+            if(_this->page.TableNumbers[i] == pageNumber){
+                frame_number = _this->page.TableFrames[i];
             }
         }
 
         if(frame_number == -1){// the page is not found in those contents
             getStore(_this, pageNumber); // gets data from .bin
-            _this->pager.faults++;
+            _this->page.faults++;
             frame_number = _this->firstAvailableFrame - 1;
         }
     }
@@ -71,7 +71,7 @@ void print_stats(memory * _this, double total_addresses){
     // calculate and print out the stats
     printf("Number of translated addresses = %.0f\n", total_addresses);
 
-    printf("Page Miss Rate: %.3f\n",_this->pager.faults / total_addresses);
+    printf("Page Miss Rate: %.3f\n",_this->page.faults / total_addresses);
     printf("TLB Hit Rate: %.3f\n", _this->TLB.hits / total_addresses);
 
 }
