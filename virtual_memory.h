@@ -5,6 +5,14 @@
 #ifndef HW5_VIRTUAL_MEMORY_H
 #define HW5_VIRTUAL_MEMORY_H
 
+
+#define FRAME_SIZE 256
+#define TOTAL_NUMBER_OF_FRAMES 128
+#define TLB_SIZE 16
+#define PAGE_TABLE_SIZE 256
+#define ADDRESS_BUFFER_SIZE  10
+
+
 typedef struct page_data {
     int TableNumbers[PAGE_TABLE_SIZE];//holds the page numbers
     int TableFrames[PAGE_TABLE_SIZE]; //holds the frame numbers
