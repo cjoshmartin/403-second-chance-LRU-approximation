@@ -26,6 +26,6 @@ typedef struct data_struct {
     int physicalMemory[TOTAL_NUMBER_OF_FRAMES][FRAME_SIZE];
     int firstAvailableFrame; //tracks the first available frame
     int firstAvailablePageTableNumber; //tracks the first available page table entry
-} virtual_memory;
+} memory;
 
 #endif //HW5_VIRTUAL_MEMORY_H

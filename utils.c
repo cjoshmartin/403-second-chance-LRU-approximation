@@ -5,7 +5,7 @@
 #include <string.h>
 #include "utils.h"
 
-void FIFO_algorthim(virtual_memory *_this, int pageNumber, int frameNumber) {
+void FIFO_algorthim(memory *_this, int pageNumber, int frameNumber) {
 
     int i;  // if it's already in the TLB, break
     for(i = 0; i < _this->TLB.entries; i++){
@@ -46,7 +46,7 @@ void FIFO_algorthim(virtual_memory *_this, int pageNumber, int frameNumber) {
     }
 }
 
-void setIntoTLB(virtual_memory *_this, int pageNumber, int frameNumber) {
+void setIntoTLB(memory *_this, int pageNumber, int frameNumber) {
 
     FIFO_algorthim(_this, pageNumber, frameNumber);
 
@@ -55,9 +55,9 @@ void setIntoTLB(virtual_memory *_this, int pageNumber, int frameNumber) {
     }
 }
 
-#define BUFFER_SIZE  256 // number of bytes to read
+#define BUFFER_SIZE  FRAME_SIZE // number of bytes to read
 
-void getStore(virtual_memory *_this, int pageNumber) {
+void getStore(memory *_this, int pageNumber) {
     signed char buffer[BUFFER_SIZE];
 
     if (fseek(_this->backing_store, pageNumber * BUFFER_SIZE, SEEK_SET) != 0) {
@@ -75,8 +75,8 @@ void getStore(virtual_memory *_this, int pageNumber) {
     }
 
     // load the frame number into the page table in the first available frame
-    _this->pager.TableNumbers[_this->firstAvailablePageTableNumber] = pageNumber;
-    _this->pager.TableFrames[_this->firstAvailablePageTableNumber] = _this->firstAvailableFrame;
+    _this->page.TableNumbers[_this->firstAvailablePageTableNumber] = pageNumber;
+    _this->page.TableFrames[_this->firstAvailablePageTableNumber] = _this->firstAvailableFrame;
 
     //track the next available frames
     _this->firstAvailableFrame++;

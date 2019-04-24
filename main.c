@@ -8,7 +8,7 @@
 #include "utils.h"
 #include "virtual_memory.h"
 
-int find_frame(virtual_memory * _this, int pageNumber){
+int find_frame(memory * _this, int pageNumber){
     int i,
     frame_number = - 1;
 
@@ -36,7 +36,7 @@ int find_frame(virtual_memory * _this, int pageNumber){
 }
 
 void getPage(
-        virtual_memory * _this,
+        memory * _this,
         int logical_address// reads in 32-bit numbers
         ){
     // Only concerned w/  RIGHTMOST 16-bit addresses of logical_address
@@ -66,7 +66,7 @@ FILE * openFile(char fileName[100], char read[3]){
     return filPtr;
 }
 
-void print_stats(virtual_memory * _this, double total_addresses){
+void print_stats(memory * _this, double total_addresses){
 
     // calculate and print out the stats
     printf("Number of translated addresses = %.0f\n", total_addresses);
