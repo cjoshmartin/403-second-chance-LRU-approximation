@@ -54,16 +54,16 @@ void setIntoTLB(memory *_this, int pageNumber, int frameNumber) {
     }
 }
 
-#define BUFFER_SIZE  FRAME_SIZE // number of bytes to read
+
 
 void getStore(memory *_this, int pageNumber, int frame_number) {
 
-    if (fseek(_this->backing_store, pageNumber * BUFFER_SIZE, SEEK_SET) != 0) {
+    if (fseek(_this->backing_store, pageNumber * PAGE_TABLE_SIZE, SEEK_SET) != 0) {
         fprintf(stderr, "Error seeking in backing store\n");
     }
 
     // load the bits into the first available frame in the physical memory 2D array
-    if (fread(_this->physicalMemory[frame_number], sizeof(signed char), BUFFER_SIZE, _this->backing_store) == 0) {
+    if (fread(_this->physicalMemory[frame_number], sizeof(signed char), PAGE_TABLE_SIZE, _this->backing_store) == 0) {
         fprintf(stderr, "Error reading from backing store\n");
     }
 
