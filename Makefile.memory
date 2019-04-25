@@ -31,8 +31,8 @@ LIBPREFIX     = lib
 LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
-OBJS          = main$(OBJEXT) utils$(OBJEXT)
-SRC           = main.c utils.c
+OBJS          = main$(OBJEXT) utils$(OBJEXT) virtual_memory$(OBJEXT)
+SRC           = main.c utils.c virtual_memory.c
 LINK.cc       = $(LD) $(LDFLAGS)
 EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
@@ -55,6 +55,9 @@ main$(OBJEXT): main.c
 
 utils$(OBJEXT): utils.c
 	$(COMPILE.c) $(EXPORTFLAGS) $(OUTPUT_OPTION) utils.c
+
+virtual_memory$(OBJEXT): virtual_memory.c
+	$(COMPILE.c) $(EXPORTFLAGS) $(OUTPUT_OPTION) virtual_memory.c
 
 clean:
 	-$(RM) $(OBJS)
