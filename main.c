@@ -36,7 +36,7 @@ int second_chance(memory * _this, int frame_number, int pageNumber){
 
     _this->frame_table[frame_number] = pageNumber;
 
-    getStore(_this, pageNumber, 0); // gets data from .bin
+    getStore(_this, pageNumber, frame_number); // gets data from .bin
     _this->pageTable[pageNumber].frame_number = -1;
     _this->pageTable->reference_bit = 0;
 
