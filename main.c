@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
 
     double addresses_seen = 0.0;
     char address[ADDRESS_BUFFER_SIZE];
-     virtual_memory * _this = (virtual_memory *)(malloc(sizeof(virtual_memory)));
+     memory * _this = (memory *)(malloc(sizeof(memory)));
 
     if (argc != 2) {
         fprintf(stderr,"Error: wrong number of Arguments passed");
