@@ -2,9 +2,9 @@
 
 **Name**: Josh Martin
 
-**HMW**: 5
+**HMW**: 6
 
-**Date**: 04/11/2019
+**Date**: 04/25/2019
 
 <!--NOTE: TLB <=> Translation look-aside buffer-->
 
@@ -27,7 +27,7 @@ The program reads a file containing several 32-bit integer numbers that represen
 
 ## Address Structure
 
-![](imgs/image_1.png)
+![](image_1.png)
 
 * Physical Memory is broken into fixed-sized blocks called frame
 * Logical memory is broken into blocks of equal size blocks called pages. 
@@ -107,7 +107,7 @@ The program will keep cycling through addresses until `address.txt` is empty.
 
 If the page number is not in the TLB, then a TLB miss happens. The memory reference to the page table must be made. When the frame number is obtained, it is now possible to access memory. In the next access, this chunk of memory will be more easily accessible by the use of it's page number and frame number in the TLB. 
 
-![](imgs/image_2.png)
+![](image_2.png)
 
 ### Creating the Page Number and Offset
 
@@ -358,12 +358,23 @@ Results
 
 ## Output 
 
+#### Old Results
 ```bash
 Number of translated addresses = 1000
 Page Miss Rate: 0.244
 TLB Hit Rate: 0.055
 ```
 
+
+#### New Results 
+```
+Number of translated addresses = 1000
+Page Miss Rate: 0.947
+TLB Hit Rate: 0.055
+```
+
+
+It think I might of messed up somewhere on how I count my page misses but the TLB is still the same (which it should be) .
 
 Summary
 =======
