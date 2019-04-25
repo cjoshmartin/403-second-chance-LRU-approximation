@@ -97,11 +97,12 @@ void getPage(
 
     setIntoTLB(_this, pageNumber, frame_number);
     physical_address = (frame_number << 8) | offset;
-    printf("Virtual address: %d Physical address: %d Value: %d\n",
-            logical_address,
-            physical_address,
+    printf("Virtual address: %d"
+           " Physical address: %d Value: %d\n",
+           logical_address,
+           physical_address,
            _this->physicalMemory[frame_number][offset]
-            );
+    );
 }
 
 FILE * openFile(char fileName[100], char read[3]){
