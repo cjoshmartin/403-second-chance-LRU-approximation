@@ -8,5 +8,5 @@
 #include <stdio.h>
 #include "virtual_memory.h"
 void setIntoTLB(memory *_this, int pageNumber, int frameNumber);
-void getStore(memory *_this, int pageNumber);
+void getStore(memory *_this, int pageNumber, int frame_number);
 #endif //HW5_UTILS_H
