@@ -35,6 +35,7 @@ typedef struct data_struct {
     FILE *backing_store;
     Page_data page;
     TLB_data TLB;
+    Page_table_item pageTable[PAGE_TABLE_SIZE];
     int physicalMemory[TOTAL_NUMBER_OF_FRAMES][FRAME_SIZE];
     int firstAvailableFrame; //tracks the first available frame
     int firstAvailablePageTableNumber; //tracks the first available page table entry
