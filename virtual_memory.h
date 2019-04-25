@@ -12,6 +12,10 @@
 #define PAGE_TABLE_SIZE 256
 #define ADDRESS_BUFFER_SIZE  10
 
+typedef struct {
+    int frame_number;
+    int refereence_bit;
+}Page_table_item;
 
 typedef struct page_data {
     int TableNumbers[PAGE_TABLE_SIZE];//holds the page numbers
