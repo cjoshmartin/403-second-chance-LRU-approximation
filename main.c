@@ -13,9 +13,11 @@ int find_frame(memory * _this, int pageNumber){
     frame_number = - 1;
 
     for(i = 0; i < TLB_SIZE; i++){
-        if(_this->TLB.pageNumber[i] == pageNumber){
-            frame_number = _this->TLB.frameNumber[i];
+        if(_this->TLB_table[i].pageNumber == pageNumber){
+            frame_number = _this->TLB_table[i].frameNumber;
             _this->TLB.hits++;
+
+            _this->pageTable[i].refereence_bit = 1;
         }
     }
 

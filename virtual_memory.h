@@ -18,8 +18,8 @@ typedef struct {
 }Page_table_item;
 
 typedef struct {
-    int PageNumber;
-    int FrameNumber;
+    int pageNumber;
+    int frameNumber;
 } Translation_Lookaside_Buffer;
 
 typedef struct page_data {
