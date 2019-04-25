@@ -17,6 +17,11 @@ typedef struct {
     int refereence_bit;
 }Page_table_item;
 
+typedef struct {
+    int PageNumber;
+    int FrameNumber;
+} Translation_Lookaside_Buffer;
+
 typedef struct page_data {
     int TableNumbers[PAGE_TABLE_SIZE];//holds the page numbers
     int TableFrames[PAGE_TABLE_SIZE]; //holds the frame numbers
@@ -36,6 +41,7 @@ typedef struct data_struct {
     Page_data page;
     TLB_data TLB;
     Page_table_item pageTable[PAGE_TABLE_SIZE];
+    Translation_Lookaside_Buffer TLB_table[TLB_SIZE];
     int physicalMemory[TOTAL_NUMBER_OF_FRAMES][FRAME_SIZE];
     int firstAvailableFrame; //tracks the first available frame
     int firstAvailablePageTableNumber; //tracks the first available page table entry
