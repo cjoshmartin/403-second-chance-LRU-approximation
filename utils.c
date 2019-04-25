@@ -34,14 +34,6 @@ void FIFO_algorthim(memory *_this, int pageNumber, int frameNumber) {
             _this->TLB_table[i].pageNumber = _this->TLB_table[i+1].pageNumber;
             _this->TLB_table[i].frameNumber = _this->TLB_table[i+1].frameNumber;
         }
-//        if(_this->TLB.entries < TLB_SIZE){// if there is room, put @ end
-//            _this->TLB.pageNumber[_this->TLB.entries] = pageNumber;
-//            _this->TLB.frameNumber[_this->TLB.entries] = frameNumber;
-//        }
-//        else{// put the page and frame @  (entries - 1)
-//            _this->TLB.pageNumber[_this->TLB.entries-1] = pageNumber;
-//            _this->TLB.frameNumber[_this->TLB.entries-1] = frameNumber;
-//        }
     }
 }
 
